@@ -18,7 +18,7 @@ As a note, all other code reflected in the PyPoll_challenge_starter_code.py was 
 ## Results
 The analysis of the county election data:
 
-![election_analysis](https://github.com/drewabramo12/working_with_python/blob/main/Analysis/election_analysis.txt)
+![election_analysis](https://github.com/drewabramo12/working_with_python/blob/main/Analysis/election_analysis.PNG)
 
 
 - There were "369,711" votes cast in this election.
