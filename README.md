@@ -17,32 +17,15 @@ As a note, all other code reflected in the PyPoll_challenge_starter_code.py was 
 
 ## Results
 The analysis of the county election data:
+
+![election_analysis](https://github.com/drewabramo12/working_with_python/blob/main/Analysis/election_analysis.txt)
+
+
 - There were "369,711" votes cast in this election.
-
-This was determined by creating the `for` loop:
-```
-for row in reader:
-
-        # Add to the total vote count
-        total_votes = total_votes + 1
-```
 - The counties were:
     - Arapahoe
     - Denver
     - Jefferson
-This was determined by creating the `for` loop:
-```
-for row in reader:
-
-        # Add to the total vote count
-        total_votes = total_votes + 1
-
-        # Get the candidate name from each row.
-        candidate_name = row[2]
-
-        # 3: Extract the county name from each row.
-        county_name = row[1]
-```
 - The county turn out was:
     - Jefferson had 10.5% of the total votes with 38,855 votes.
     - Denver had 82.8% of the total votes with 306,055 votes.
@@ -54,7 +37,15 @@ for row in reader:
     - Diana DeGette had 73.8% of the total votes with 272,892 votes.
     - Raymon Anthony Doane had 3.1% of the total votes with 11,606 votes.
 
+### Results Explanation
+
+The analysis occurred through a structure of two different `with open()` codes. The first `with open()` opened and read the election_results.csv and was used to populate the total_votes, candidate_name, candidate_options, candidate_votes, county_name, county and county_votes variables through one `for` loop. The second `with open()` used these populated variables to run two `for` loops as well as write the results into the election_analysis.txt file. The first `for` loop printed the county name, percentage of overall votes and count of votes. It also determined which county had the highest turn out. All of this was written into the election_analysis.txt file. The second `for` loop was used to create a similar pattern to determine each candidate's percentage of overall vote and who was the winner of the election. Some lines of code that are worth noting are the lines:
+```
+        cvote_percentage = float(cvotes) / float(total_votes) * 100
+        county_results = (f"{county_name}: {cvote_percentage:.1f}% ({cvotes:,})\n")
+```
+These lines of code allowed for the creation of a variable that stores the percentage of the county vote and could be used elssewhere rather than needing to use the same algorithm over and over. It also formats the county result information into an easily printable string that works with its `for` loop.
+
 ## Election-Audit Summary
 
-
-
+This created script could be very useful other local elections of this scale across the united state. It is very flexible in its output and can contain multiple extra counties and candidates without any loss of fidelity of analysis. This script could also be modified to scale with the size of the election. A mayoral election would just need to change the county variables and printables to reflect city districts instead. Another relevant modification that may not reflect on a singular election result but also future elections may be to look at including censor information to get a percentage of turn out for each county compared to county population. This information could be used to help get a better idea about civil engagement within the county and can help justify initiative for local community out reach for better representation.
